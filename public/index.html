@@ -1,10 +1,42 @@
 <html>
     <head>
         <title>Rock</title>
-        <!-- Link to your script file(s) and CSS in here somewhere -->
+        <link href="./styles.css" rel="stylesheet">
+	<script src=""></script> 
+	<!-- Link to your script file(s) and CSS in here somewhere -->
     </head>
     <body>
+	
+	<form id="userinput" class="">
+		<input type="radio" id="rps" name="game" value="rps">
+		<label for="rps">Play rock, paper, sissors?</label>
+		<br/><br/>
+		<input type="radio" id="rpsls" name="game" value="rpsls">
+		<label for="rpsls">Play rock, paper, sissors, lizard, Spock?</label>
+		<br/><br/>
+		<input type="checkbox" id="opponent" name="playtype" value="opponent">
+		<label for="opponent">Play against an opponent?</label>	
+		<br/><br/>
 
+	        <input type="radio" id="rock" name="player" value="rock" class="rps">
+		<label>Rock</label>	
+
+		<input type="radio" id="paper" name="player" value="paper" class="rps">
+		<label>Paper</label>	
+	       
+	        <input type="radio" id="scissors" name="player" value="scissors" class="rps">
+		<label>Scissors</label>	
+	        
+		<input type="radio" id="lizard" name="player" value="lizard" class="rpsls">
+		<label class="rpsls hidden">Lizard</label>	
+	        
+		<input type="radio" id="spock" name="player" value="spock" class="rpsls">
+		<label class="rpsls hidden">Spock</label>	
+		
+		<br/><br/>
+		<input type="submit" id="play" name="controls" value="Play">	
+		<input type="submit" id="startover" name="controls" value="Start Over">
+        </form>
     <!-- Your interface markup goes here -->
     <!-- For interface examples, look in the `/examples/` directory in the root of your starter code repo. -->
 
