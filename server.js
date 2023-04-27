@@ -102,3 +102,11 @@ process.on('SIGINT', () => {
         }    
     })
 })
+
+//import {rsp, rpsls} from './folder
+
+//copy and paste api where each of the endpoints are serving
+
+//take a04 endpoints into this file
+
+//take control or library and put it in...
