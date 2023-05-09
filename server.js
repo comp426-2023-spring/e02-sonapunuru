@@ -62,13 +62,9 @@ const app = express()
 // Set a port for the server to listen on
 const port = args.port || args.p || process.env.PORT || 8080
 
-//
-// Start of my code
-//
-
 // Add API endpoints
-import { rpsls } from './control/game.js';
-import { rps } from './control/game.js';
+import { rpsls } from './control/control.js';
+import { rps } from './control/control.js';
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
