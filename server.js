@@ -117,6 +117,8 @@ app.get("/app/", function(req, res) {
 });
 
 
+// Create and update access log
+// The morgan format below is the Apache Foundation combined format but with ISO8601 dates
 app.use(morgan(':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"',
     {stream: fs.createWriteStream(path.join(logpath, 'access.log')), flags: 'a' }
 ))
