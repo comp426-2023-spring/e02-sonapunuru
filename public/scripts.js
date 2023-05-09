@@ -1,40 +1,69 @@
-// If you would like to see some examples of similar code to make an interface interact with an API, 
-// check out the coin-server example from a previous COMP 426 semester.
-// https://github.com/jdmar3/coinserver
-
 function showHideShots() {
+    let check = document.getElementById('opponent');
+    let radiorps = document.getElementById('rps');
 
-	let check = document.getElementById('opponent');
-	let radiorps = document.getElementsByClass('rps');
-	let radiorpsls = document.getElementsByClass('rpsls');
-	
-	if (check.checked == true) {
-		$('.shots').show()	
-	} else {
-		$('.shots').hide()	
-	}
+    // Show or hide radio buttons
+    if (check.checked == true) {
+        $('.shots').show();
+        // Show or hide based on game selected
+        if (radiorps.checked == true) {
+            $('.rpsls').hide();
+        }
+    } else {
+        $('.shots').hide();
+    }
+
+
 
 }
 
 function startOver() {
-
-	document.getElementById('userinput').reset();
-	showHideShots();
-
+    // Reset form
+    document.getElementById('userinput').reset();
+    showHideShots();
 }
 
 async function playGame() {
-			
-	let game = $('input[type=radio][name=game]:checked').val();
-	let shot = $('input[type=radio][name=shot]:checked').val();
-	
-	let baseurl = window.location.href + 'app/'
-	console.log(baseurl)	
-	let url = baseurl + game + /play/ + shot
-	console.log(url)
-		
-	let response = await fetch(url)
-	let result = await response.json()
-	console.log(result)
+    // Get whether the box is checked
+    let check = document.getElementById('opponent');
+
+    // Get the selected game
+    let game = $('input[type=radio][name=game]:checked').val();
+
+
+    let shot = '';
+    // Get the shot selected
+    if (check.checked == true) {
+        shot = $('input[type=radio][name=shot]:checked').val() + '/';
+    } 
+
+    // Configure base URL
+    let baseurl = window.location.href + 'app/';
+    console.log(baseurl);
+
+    
+    // Configure url
+    let url = baseurl + game + '/play/' + shot
+
+    // Fetch results
+    let response = await fetch(url);
+    let results = await response.json();
+    
+    // Log results
+    console.log(results)
+
+    // Set results html element
+    let resultElement = document.getElementById('result');
+
+    if (check.checked == false) {
+        // Set results HTML for no shot
+        resultElement.innerHTML = 'Opponent: ' + results.player;
+    } else {
+        // Set results HTML for shot
+        resultElement.innerHTML = 'You: ' + results.player + ', Opponent: ' + results.opponent + ', Result: ' + results.result;
+    }
+    
+
+
 
 }
