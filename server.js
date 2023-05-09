@@ -111,7 +111,7 @@ process.on('SIGINT', () => {
 
 //take control or library and put it in...
 
-import { rps, rpsls } from './lib/rpsls.js'
+import { rps, rpsls } from './control/control.js'
 var argv = minimist(process.argv.slice(2));
 const port = argv.port || 5000;
 
